@@ -1,0 +1,118 @@
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the bottom of this file. -->
+
+
+<div class="container-fluid">
+  
+      <div class="col-md-12" style="margin-top: 20px;">
+          <div class=" list-group">
+
+              <a href="" class="list-group-item active">
+                  <h4 class="list-group-item-heading">YouTube Video Library</h4>
+                  
+              </a>
+
+                    <div class="{{DropdownClass}}" dropdown is-open="status.isopen" style="width:100%;top:">
+                          <button ng-click="sowButton(this)" style="background: #F0FFFF;width: 100%;text-align: -webkit-center;Border: 1px solid;font-size: large;" id="single-button"
+                                  type="button" class="btn" dropdown-toggle ng-disabled="disabled">
+                              Library {{currentPlaying}}
+                              <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="single-button" style="width:100%;">
+
+                              <li role="menuitem" ng-repeat="listItem in playlistItems">
+
+                                  <table class="table table-striped">
+                                      <tbody>
+                                          <tr style="background-color: #fff;">
+                                              <td style="width:10%"><img class="video-image" ng-src="{{ listItem.snippet.thumbnails.default.url}}"></td>
+                                              <td style="width:100%">
+                                                  <a href="" style="height:50%;border: 0px;color:#555;" data-toggle="tooltip" data-placement="right"
+                                                     class="list-group-item" title="{{listItem.snippet.title}}" ng-click="playlist(this)">
+                                                      {{listItem.snippet.title}}
+
+                                                  </a>
+                                              </td>
+                                             
+                                          </tr>
+
+                                      </tbody>
+                                  </table> 
+                              </li>
+
+                          </ul>
+                  </div>
+                  <a href="" class="list-group-item">
+                      <div id="player">
+                          <div id="placeholder" style="width:100%;height:450px;"></div>
+                      </div>
+                  </a>
+              <div href="" class="list-group-item">
+                  <table class="table table-striped" ng-repeat="video in upcoming" ng-if="true == video.show">
+                      <tbody>
+                          <tr style="background-color: #fff;">
+                              <td style="width:10%"><img class="video-image" ng-src="{{ video.thumbnail }}"></td>
+                              <td style="width:95%">
+                                  <a href="" style="height:50%;border: 0px;color:#555;" data-toggle="tooltip" data-placement="right"
+                                     class="list-group-item" title="{{video.title}}" ng-click="launch(video.id, video.title)">
+                                      {{video.title}}
+
+                                  </a>
+                              </td>
+                              <td>
+                                  <h3 style="width:65px">
+                                      <a class="label label-danger" ng-click="delete('upcoming', video.id)">
+                                          Delete
+                                      </a>
+                                  </h3>
+                              </td>
+                              <td>
+                                  <h3 style="width:65px">
+                                      <a class="label label-default" ng-click="repeat(video)">Repeat&nbsp;{{video.repeat.length}}</a>
+                                  </h3>
+                              </td>
+                          </tr>
+                          <tr style="background-color: #fff;">
+                             
+                          </tr>
+
+                      </tbody>
+                  </table> 
+            </div>
+            </div>
+
+      </div>
+  
+</div>
+
+<style>
+    .o365cs-nav-appTileBackground{color:#f5f5f5;}
+    .o365cs-nav-appTileIcon{color:#f5f5f5;}
+</style>
+
+<!--
+O365-Angular-GettingStarted, https://github.com/OfficeDev/O365-Angular-GettingStarted
+ 
+Copyright (c) Microsoft Corporation
+All rights reserved. 
+ 
+MIT License:
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+ 
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.    
+  
+-->

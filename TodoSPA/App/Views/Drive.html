@@ -1,0 +1,144 @@
+﻿<div class="progress" ng-hide="files.length>0">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">60% Complete</span></div>
+</div>
+
+<style>
+
+    .modal-header {
+        background-image: linear-gradient(to bottom,#d9534f 0,#d9534f 100%);
+        color: #fff;
+    }
+
+    .close {
+    color: #fff;
+    opacity: .9;
+    }
+    .imgClass{
+       width: 55px; height: 55px; font-size: 16px;
+    }
+</style>
+
+
+
+<div class="col-md-12" style="margin-top: 15px;padding-left: 0px;width:">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="margin-top:200px">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h4 class="modal-title ng-binding" id="exampleModalLabel">X</h4>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">{{targetElm.Title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <head>
+                        <meta name="WebPartPageExpansion" content="full" />
+                    </head>
+                    <form>
+
+                        <div class="form-group subGroup" style="display:{{targetElm.sowVisible}}">
+                            <div class="row">
+                                <div class='col-sm-9' style="width:">
+                                    <label for="recipient-name" class="control-label">
+                                        this document will be deleted, please press OK to confirm.
+                                    </label><br>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <!-- for System Status  -->
+                        <div class="form-group" style="display:none">
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="text-align:left">
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="goDelete(this)">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" list-group" ng-if="false == isMessage">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Modified</th>
+                    <th>Modified By</th>
+                    <th>Size</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="file in files" ng-show="!file.isDeleted">
+                    
+                        <td>{{$index+1}}</td>
+                        <td>
+                            <img class="FileTypeIcon-icon imgClass" ng-if="false == file.isFile"
+                                 src="https://spoprod-a.akamaihd.net/files/onedrive-next-prod_ship-2016-02-08.033/odsp-media/images/filetypes/16/folder.svg"
+                                 alt="Folder">
+                            <img class="FileTypeIcon-icon imgClass" ng-if="true == file.isFile"
+                                 src="{{file.Img}}"
+                                 alt="txt File">
+                        </td>
+                        <td>
+                            <h4 ng-if="false == file.isFile">
+
+                                <a href="" ng-click="goDrive(this)">
+                                    <p class="list-group-item-heading">{{file.Subject}}</p>
+
+                                </a>
+                            </h4>
+                            <h4 ng-if="true == file.isFile">
+
+                                <a href="{{file.webUrl}}" target="_blank">
+                                    <p class="list-group-item-heading">{{file.Subject}}</p>
+
+                                </a>
+                            </h4>
+                            <p ng-hide="!file.isAction">
+                                <button type="button" class="btn btn-sm btn-default" ng-click="goAction(this)">Cancel</button>
+                                <button type="button" class="btn btn-sm btn-danger" ng-click="goModalDelete(this)">Delete</button>
+                               
+                            </p>
+
+                        </td>
+                        <td><span class="label label-primary">{{file.LongDate}}</span></td>
+                        <td>{{file.ModifiedBy}}</td>
+                        <td>{{file.size}}</td>
+                        <td><h4><a href="" ng-click="goAction(this)"><span class="label label-warning">....</span></a></h4></td>
+                   
+
+                </tr>
+                    </tbody>
+    </table>
+
+
+</div>
+
+    <div class="list-group">
+
+        
+
+        <div align="center" ng-if="true == btnGoback">
+
+            <a href="" class="btn btn-lg btn-link" ng-click="goBack()">
+                Go Back
+            </a>
+
+        </div>
+
+</div>
+
+
+

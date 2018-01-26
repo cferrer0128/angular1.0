@@ -1,0 +1,81 @@
+﻿<div class="progress" ng-hide="emails.length>0">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">60% Complete</span></div>
+</div>
+<ul class="nav nav-pills" role="tablist" ng-if="false == isMessage">
+    <li role="presentation" class="active" ng-if="true == isHome">
+        <a href="" ng-click="goMessage(this,'msg')">
+            Home<span class="badge">{{ newEmails.length}}</span>
+        </a>
+    </li>
+    <li role="presentation" class="active" ng-if="false == isHome">
+        <a href="" ng-click="goMessage(this,'msg')">
+            Home<span class="badge">{{ tempEmails.length}}</span>
+        </a>
+    </li>
+    <li role="presentation"><a href="">Profile</a></li>
+    <li role="presentation"><a href="" ng-click="goMessage(this,'text')">Messages<span class="badge">{{ chats.length}}</span></a></li>
+    
+</ul>
+
+<div class="col-md-12" style="margin-top: 15px;padding-left: 0px;width:">
+
+    <div class=" list-group" ng-if="false == isMessage">
+        <div ng-repeat="email in emails">
+            <a href="" class="list-group-item" ng-click="goMessage(this,'')">
+                <h4>
+                    <img src="TodoSPA/App/Images/{{email.Img}}" />
+                    <!--<span class="o365cs-nav-appTileIcon owaimg ms-Icon-- ms-icon-font-size-22 wf-o365-outlooklogo ms-fcl-w o365cs-navMenuButton"></span>-->
+                    <span class="label label-default">{{email.DateTimeCreated}}</span>
+                    <span class="label label-primary">From  {{email.Sender}}</span>
+                    <span class="label label-danger">{{email.ToRecipients}}</span>
+
+
+                </h4>
+                <div ng-if="false == email.IsRead">
+                    <!-- code to render a large video block-->
+                    <span class="list-group-item-text">{{email.Subject}}</span>
+                    <span class="label label-default">new</span>
+                </div>
+                <div ng-if="true == email.IsRead">
+
+                    <p class="list-group-item-text">{{email.Subject}}</p>
+                </div>
+
+
+                <p class="list-group-item-text">{{email.BodyPreview}}</p>
+
+                <div class="progress" style="height:4px">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="sr-only">60% Complete</span></div>
+                </div>
+                <h4 style="">
+                    <span class="label label-danger">Delete</span>
+
+                </h4>
+
+
+            </a>
+        </div>
+
+    </div>
+
+    <div class=" list-group" ng-if="true == isMessage">
+
+        <div compile="html" style="margin-left:10px" ng-class="list-group-item-text">
+
+            
+        </div>
+
+        <div align="center">
+
+
+
+            <a href="" class="btn btn-lg btn-link btnBack" ng-click="goBack()">
+                Go Back
+            </a>
+
+        </div>
+
+</div>
+
+
+
