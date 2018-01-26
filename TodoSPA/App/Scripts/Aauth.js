@@ -2,7 +2,7 @@
 // at {{ https://cloud.google.com/console }}.  528582006686-krarvbsqfnioi69nrfppkt3qnfle5iaa.apps.googleusercontent.com
 // If you run this code from a server other than http://localhost,
 // you need to register your own client ID. https://www.googleapis.com/youtube/v3/liveBroadcasts
-var OAUTH2_CLIENT_ID = '528582006686-efaf6ki6a2v9a6v9fsujv1uj2u1gj5l6.apps.googleusercontent.com	';
+var OAUTH2_CLIENT_ID = '528582006686-efaf6ki6a2v9a6v9fsujv1uj2u1gj5l6.apps.googleusercontent.com';
 var OAUTH2_SCOPES = [
   'https://www.googleapis.com/auth/youtube',
   'https://www.googleapis.com/auth/gmail.readonly',
